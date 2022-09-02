@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "OdiqqvyDOh0poX0PI0RukIBodZ+FzIix0zvcnoLR4+tRqxtkxB0NqEOZOvi93qvN/UymvbqlbqzrFWsG74d0Tg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Artem\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
