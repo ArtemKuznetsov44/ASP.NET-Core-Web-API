@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "vP915g2BxwWQV2sO6cIr5HvIpm9HkF6V+SnBpgm1bAUhOhYq8wDBBWoNPnfsPO9uCAbA+lqKk8WBewV7XT1yxg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsManager\\MetricsManager.csproj",
@@ -21,6 +22,18 @@
     "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "C:\\Users\\Artem\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+=======
+  "dgSpecHash": "usKfEzsbq3PfUcAqAvRKX7qStaTyIYYvH9R1rDllgYBNAi7/rfWdJLio4mELbwpszKAeEl1S6ZDCZSC2rxh8BQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsManager\\MetricsManager.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Artem\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
   ],
   "logs": []
 }

@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ﻿using MetricsAgent.Models;
 using MetricsAgent.Models.Requests;
 using MetricsAgent.Services;
 using Microsoft.AspNetCore.Http;
+=======
+﻿using Microsoft.AspNetCore.Http;
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
 using Microsoft.AspNetCore.Mvc;
 
 namespace MetricsAgent.Controllers
@@ -10,6 +14,7 @@ namespace MetricsAgent.Controllers
     [ApiController]
     public class HddMetricsController : ControllerBase
     {
+<<<<<<< HEAD
         #region Services
 
         private readonly ILogger<HddMetricsController> _logger;
@@ -44,6 +49,12 @@ namespace MetricsAgent.Controllers
                 $"fromTime: {fromTime},\n" +
                 $"toTime: {toTime}");
             return Ok(_hddMetricRepository.GetByTimePeriod(fromTime, toTime));
+=======
+        [HttpGet("left/from/{fromTime}/to/{toTime}")]
+        public IActionResult GetLeftMetricsByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        {
+            return Ok(); 
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
         }
     }
 }

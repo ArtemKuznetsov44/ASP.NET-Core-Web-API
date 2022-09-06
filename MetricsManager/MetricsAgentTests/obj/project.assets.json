@@ -57,6 +57,7 @@
           "buildMultiTargeting/_._": {}
         }
       },
+<<<<<<< HEAD
       "Microsoft.Extensions.Configuration.Abstractions/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -143,6 +144,8 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "Microsoft.NET.Test.Sdk/17.1.0": {
         "type": "package",
         "dependencies": {
@@ -529,6 +532,7 @@
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
         }
       },
+<<<<<<< HEAD
       "NLog/5.0.1": {
         "type": "package",
         "compile": {
@@ -567,6 +571,8 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "NuGet.Frameworks/5.11.0": {
         "type": "package",
         "compile": {
@@ -747,6 +753,7 @@
           }
         }
       },
+<<<<<<< HEAD
       "Stub.System.Data.SQLite.Core.NetStandard/1.0.116": {
         "type": "package",
         "compile": {
@@ -774,6 +781,8 @@
           }
         }
       },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "Swashbuckle.AspNetCore/6.2.3": {
         "type": "package",
         "dependencies": {
@@ -898,12 +907,15 @@
           "ref/netstandard1.3/System.Console.dll": {}
         }
       },
+<<<<<<< HEAD
       "System.Data.SQLite.Core/1.0.116": {
         "type": "package",
         "dependencies": {
           "Stub.System.Data.SQLite.Core.NetStandard": "[1.0.116]"
         }
       },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "System.Diagnostics.Debug/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1376,6 +1388,7 @@
           "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
+<<<<<<< HEAD
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
@@ -1388,6 +1401,8 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "System.Runtime.Extensions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1913,11 +1928,15 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+<<<<<<< HEAD
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "NLog": "5.0.1",
           "NLog.Web.AspNetCore": "5.1.0",
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.Data.SQLite.Core": "1.0.116"
+=======
+          "Swashbuckle.AspNetCore": "6.2.3"
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
         },
         "compile": {
           "bin/placeholder/MetricsAgent.dll": {}
@@ -2138,6 +2157,7 @@
         "tools/netcoreapp2.1/GetDocument.Insider.runtimeconfig.json"
       ]
     },
+<<<<<<< HEAD
     "Microsoft.Extensions.Configuration.Abstractions/5.0.0": {
       "sha512": "ETjSBHMp3OAZ4HxGQYpwyGsD8Sw5FegQXphi0rpoGMT74S4+I2mm7XJEswwn59XAaKOzC15oDSOWEE8SzDCd6Q==",
       "type": "package",
@@ -2294,6 +2314,8 @@
         "version.txt"
       ]
     },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     "Microsoft.NET.Test.Sdk/17.1.0": {
       "sha512": "MVKvOsHIfrZrvg+8aqOF5dknO/qWrR1sWZjMPQ1N42MKMlL/zQL30FQFZxPeWfmVKWUWAOmAHYsqB5OerTKziw==",
       "type": "package",
@@ -2919,6 +2941,7 @@
         "tools/install.ps1"
       ]
     },
+<<<<<<< HEAD
     "NLog/5.0.1": {
       "sha512": "lNErNEPzYiZtUAlgvXpSRxUIPLIDHTLA8pKxkDDV//DCqzwp98FitFemOEmJjIuPvk3GC3ytrQMXsy7P9RTPIw==",
       "type": "package",
@@ -2988,6 +3011,8 @@
         "readme.txt"
       ]
     },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     "NuGet.Frameworks/5.11.0": {
       "sha512": "eaiXkUjC4NPcquGWzAGMXjuxvLwc6XGKMptSyOGQeT0X70BUZObuybJFZLA0OfTdueLd3US23NBPTBb6iF3V1Q==",
       "type": "package",
@@ -3230,6 +3255,7 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
+<<<<<<< HEAD
     "Stub.System.Data.SQLite.Core.NetStandard/1.0.116": {
       "sha512": "VEe/vzvn2ECKovtyb+nf8fsnNQ4EYOUms7gnp9729NN7FSR/0v/uVoBDO7DETzV7YCquRVwRnSnYuoOwAoTEKA==",
       "type": "package",
@@ -3251,6 +3277,8 @@
         "stub.system.data.sqlite.core.netstandard.nuspec"
       ]
     },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     "Swashbuckle.AspNetCore/6.2.3": {
       "sha512": "cnzQDn0Le+hInsw2SYwlOhOCPXpYi/szcvnyqZJ12v+QyrLBwAmWXBg6RIyHB18s/mLeywC+Rg2O9ndz0IUNYQ==",
       "type": "package",
@@ -3576,6 +3604,7 @@
         "system.console.nuspec"
       ]
     },
+<<<<<<< HEAD
     "System.Data.SQLite.Core/1.0.116": {
       "sha512": "djwmo97syWCpUPJbDS0e2qUFUa8cDLeIfMotVkaRkAC5gpfBSZLMzvoLkLp1prY8waAuH1jEC3wcB2ymVVQWtA==",
       "type": "package",
@@ -3587,6 +3616,8 @@
         "system.data.sqlite.core.nuspec"
       ]
     },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     "System.Diagnostics.Debug/4.3.0": {
       "sha512": "ZUhUOdqmaG5Jk3Xdb8xi5kIyQYAA4PnTNlHx1mu9ZY3qv4ELIdKbnL/akbGaKi2RnNUWaZsAs31rvzFdewTj2g==",
       "type": "package",
@@ -5279,6 +5310,7 @@
         "system.runtime.nuspec"
       ]
     },
+<<<<<<< HEAD
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "type": "package",
@@ -5304,6 +5336,8 @@
         "useSharedDesignerContext.txt"
       ]
     },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     "System.Runtime.Extensions/4.3.0": {
       "sha512": "guW0uK0fn5fcJJ1tJVXYd7/1h5F+pea1r7FLSOz/f8vPEqbR2ZAknuRDvTQ8PzAilDveOxNjSfr0CHfIQfFk8g==",
       "type": "package",
@@ -6654,11 +6688,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj",
       "projectName": "MetricsAgentTests",
       "projectPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj",
       "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgentTests\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj",
+      "projectName": "MetricsAgentTests",
+      "projectPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj",
+      "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgentTests\\obj\\",
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -6679,8 +6721,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {
               "projectPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj"
+=======
+            "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {
+              "projectPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj"
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
             }
           }
         }

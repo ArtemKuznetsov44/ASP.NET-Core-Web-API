@@ -13,6 +13,7 @@
           "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.targets": {}
         }
       },
+<<<<<<< HEAD
       "Microsoft.Extensions.Configuration.Abstractions/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -99,6 +100,8 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "Microsoft.OpenApi/1.2.3": {
         "type": "package",
         "compile": {
@@ -108,6 +111,7 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
+<<<<<<< HEAD
       "NLog/5.0.1": {
         "type": "package",
         "compile": {
@@ -173,6 +177,8 @@
           }
         }
       },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "Swashbuckle.AspNetCore/6.2.3": {
         "type": "package",
         "dependencies": {
@@ -223,6 +229,7 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+<<<<<<< HEAD
       },
       "System.Data.SQLite.Core/1.0.116": {
         "type": "package",
@@ -241,6 +248,8 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       }
     }
   },
@@ -272,6 +281,7 @@
         "tools/netcoreapp2.1/GetDocument.Insider.runtimeconfig.json"
       ]
     },
+<<<<<<< HEAD
     "Microsoft.Extensions.Configuration.Abstractions/5.0.0": {
       "sha512": "ETjSBHMp3OAZ4HxGQYpwyGsD8Sw5FegQXphi0rpoGMT74S4+I2mm7XJEswwn59XAaKOzC15oDSOWEE8SzDCd6Q==",
       "type": "package",
@@ -428,6 +438,8 @@
         "version.txt"
       ]
     },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     "Microsoft.OpenApi/1.2.3": {
       "sha512": "Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "type": "package",
@@ -445,6 +457,7 @@
         "microsoft.openapi.nuspec"
       ]
     },
+<<<<<<< HEAD
     "NLog/5.0.1": {
       "sha512": "lNErNEPzYiZtUAlgvXpSRxUIPLIDHTLA8pKxkDDV//DCqzwp98FitFemOEmJjIuPvk3GC3ytrQMXsy7P9RTPIw==",
       "type": "package",
@@ -535,6 +548,8 @@
         "stub.system.data.sqlite.core.netstandard.nuspec"
       ]
     },
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     "Swashbuckle.AspNetCore/6.2.3": {
       "sha512": "cnzQDn0Le+hInsw2SYwlOhOCPXpYi/szcvnyqZJ12v+QyrLBwAmWXBg6RIyHB18s/mLeywC+Rg2O9ndz0IUNYQ==",
       "type": "package",
@@ -615,6 +630,7 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+<<<<<<< HEAD
     },
     "System.Data.SQLite.Core/1.0.116": {
       "sha512": "djwmo97syWCpUPJbDS0e2qUFUa8cDLeIfMotVkaRkAC5gpfBSZLMzvoLkLp1prY8waAuH1jEC3wcB2ymVVQWtA==",
@@ -651,15 +667,21 @@
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt"
       ]
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+<<<<<<< HEAD
       "Microsoft.Extensions.DependencyInjection >= 6.0.0",
       "NLog >= 5.0.1",
       "NLog.Web.AspNetCore >= 5.1.0",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "System.Data.SQLite.Core >= 1.0.116"
+=======
+      "Swashbuckle.AspNetCore >= 6.2.3"
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
     ]
   },
   "packageFolders": {
@@ -669,11 +691,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
       "projectName": "MetricsAgent",
       "projectPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
       "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
+      "projectName": "MetricsAgent",
+      "projectPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
+      "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\obj\\",
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -706,6 +736,7 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+<<<<<<< HEAD
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[6.0.0, )"
@@ -725,6 +756,11 @@
           "System.Data.SQLite.Core": {
             "target": "Package",
             "version": "[1.0.116, )"
+=======
+          "Swashbuckle.AspNetCore": {
+            "target": "Package",
+            "version": "[6.2.3, )"
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
           }
         },
         "imports": [
