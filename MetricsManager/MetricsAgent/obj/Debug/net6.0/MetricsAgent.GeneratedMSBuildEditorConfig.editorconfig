@@ -8,9 +8,17 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MetricsAgent
 build_property.RootNamespace = MetricsAgent
+<<<<<<< HEAD
+build_property.ProjectDir = C:\Users\Artem\Desktop\MetricsManager\MetricsAgent\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Artem\Desktop\MetricsManager\MetricsAgent
+=======
 build_property.ProjectDir = C:\Users\Artem\Downloads\Lesson_2-20220902T152816Z-001\Lesson_2\MetricsManager\MetricsAgent\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\Artem\Downloads\Lesson_2-20220902T152816Z-001\Lesson_2\MetricsManager\MetricsAgent
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
 build_property._RazorSourceGeneratorDebug = 

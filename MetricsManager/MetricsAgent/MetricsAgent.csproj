@@ -1,5 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+<<<<<<< HEAD
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="NLog" Version="5.0.1" />
+		<PackageReference Include="NLog.Web.AspNetCore" Version="5.1.0" />
+		<PackageReference Include="NLog" Version="5.0.1" />
+		<PackageReference Include="NLog.Web.AspNetCore" Version="5.1.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.116" />
+	</ItemGroup>
+
+</Project>
+=======
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -11,3 +30,4 @@
   </ItemGroup>
 
 </Project>
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc

@@ -3,6 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< HEAD
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricsManager", "MetricsManager\MetricsManager.csproj", "{CCB002CD-E3A0-4A91-AABD-064B7BD68E94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricsAgent", "MetricsAgent\MetricsAgent.csproj", "{C1AFAFBB-F3FE-4706-840E-54A730C92B55}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricsManagerTests", "MetricsManagerTests\MetricsManagerTests.csproj", "{144BE0D9-86FF-4A1D-A442-963E21C2D7C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricsAgentTests", "MetricsAgentTests\MetricsAgentTests.csproj", "{70F2E8BE-1756-44EB-AFD5-69A1091EBCD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7E25BF97-BD96-4F91-A442-241F6FED90E6}"
+=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsManager", "MetricsManager\MetricsManager.csproj", "{CCB002CD-E3A0-4A91-AABD-064B7BD68E94}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsAgent", "MetricsAgent\MetricsAgent.csproj", "{C1AFAFBB-F3FE-4706-840E-54A730C92B55}"
@@ -10,6 +21,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsManagerTests", "MetricsManagerTests\MetricsManagerTests.csproj", "{144BE0D9-86FF-4A1D-A442-963E21C2D7C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsAgentTests", "MetricsAgentTests\MetricsAgentTests.csproj", "{70F2E8BE-1756-44EB-AFD5-69A1091EBCD9}"
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +49,13 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< HEAD
+	GlobalSection(NestedProjects) = preSolution
+		{144BE0D9-86FF-4A1D-A442-963E21C2D7C7} = {7E25BF97-BD96-4F91-A442-241F6FED90E6}
+		{70F2E8BE-1756-44EB-AFD5-69A1091EBCD9} = {7E25BF97-BD96-4F91-A442-241F6FED90E6}
+	EndGlobalSection
+=======
+>>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DBAA3B1-1BA6-47E2-AFA0-66938F62CC0E}
 	EndGlobalSection
