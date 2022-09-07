@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj",
         "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgentTests\\obj\\",
-=======
-    "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj",
-        "projectName": "MetricsAgentTests",
-        "projectPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgentTests\\MetricsAgentTests.csproj",
-        "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgentTests\\obj\\",
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -46,13 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {
                 "projectPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj"
-=======
-              "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {
-                "projectPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj"
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
               }
             }
           }
@@ -107,7 +88,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -116,16 +96,6 @@
         "projectPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
         "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\obj\\",
-=======
-    "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
-        "projectName": "MetricsAgent",
-        "projectPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
-        "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\obj\\",
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -158,7 +128,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-<<<<<<< HEAD
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -178,11 +159,6 @@
             "System.Data.SQLite.Core": {
               "target": "Package",
               "version": "[1.0.116, )"
-=======
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.2.3, )"
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
             }
           },
           "imports": [

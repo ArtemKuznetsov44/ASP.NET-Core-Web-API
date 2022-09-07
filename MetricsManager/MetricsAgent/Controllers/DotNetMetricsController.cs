@@ -1,12 +1,10 @@
-<<<<<<< HEAD
 ﻿using MetricsAgent.Models;
 using MetricsAgent.Models.Requests;
 using MetricsAgent.Services;
 using Microsoft.AspNetCore.Http;
-=======
-﻿using Microsoft.AspNetCore.Http;
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using MetricsAgent.Models.DTO;
 
 namespace MetricsAgent.Controllers
 {
@@ -14,19 +12,21 @@ namespace MetricsAgent.Controllers
     [ApiController]
     public class DotNetMetricsController : ControllerBase
     {
-<<<<<<< HEAD
-        #region Services
+        #region Services:
 
         private readonly ILogger<DotNetMetricsController> _logger;
         private readonly IDotNetMetricsRepository _dotNetMetricsRepository;
+        private readonly IMapper _mapper;
 
         #endregion
 
         public DotNetMetricsController(
             ILogger<DotNetMetricsController> logger,
-            IDotNetMetricsRepository dotNetMetricsRepository)
+            IDotNetMetricsRepository dotNetMetricsRepository, 
+            IMapper mapper)
         {
             _logger = logger;
+            _mapper = mapper;
             _dotNetMetricsRepository = dotNetMetricsRepository;
         }
 
@@ -34,27 +34,22 @@ namespace MetricsAgent.Controllers
         [HttpPost("create")]
         public IActionResult Create([FromBody] DotNetMetricCreateRequest request)
         {
-            _dotNetMetricsRepository.Create(new Models.DotNetMetric
-            {
-                Value = request.Value,
-                Time = (int)request.Time.TotalSeconds
-            });
+            _dotNetMetricsRepository.Create(_mapper.Map<DotNetMetric>(request));
             return Ok();
         }
 
         [HttpGet("errors-count/from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<DotNetMetric>> GetErrorsCountMetricByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<IList<DotNetMetricDto>> GetErrorsCountMetricByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/DotNetMetricsController/GetErrorsCountMetricByPeriod params:\n" +
                 $"fromTime: {fromTime},\n" +
                 $"toTime: {toTime}");
-            return Ok(_dotNetMetricsRepository.GetByTimePeriod(fromTime, toTime));
-=======
-        [HttpGet("errors-count/from/{fromTime}/to/{toTime}")]
-        public IActionResult GetErrorsCountMetricByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
-        {
-            return Ok(); 
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
+            return Ok(_dotNetMetricsRepository.GetByTimePeriod(fromTime, toTime).
+                Select(metric => _mapper.Map<DotNetMetricDto>(metric)).ToList());
         }
+
+        [HttpGet("all")]
+        public ActionResult<IList<DotNetMetricDto>> GetAllDotNetMetrics() => Ok(_dotNetMetricsRepository.GetAll()
+            .Select(metric => _mapper.Map<DotNetMetricDto>(metric)).ToList());
     }
 }

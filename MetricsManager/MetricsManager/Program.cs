@@ -1,5 +1,4 @@
 using MetricsManager;
-<<<<<<< HEAD
 using MetricsManager.Convertors;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.OpenApi.Any;
@@ -90,21 +89,3 @@ finally
     NLog.LogManager.Shutdown(); 
 }
 
-=======
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-
-builder.Services.AddSingleton<AgentsRepository>(); 
-
-var app = builder.Build();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc

@@ -1,5 +1,7 @@
-<<<<<<< HEAD
+using AutoMapper;
+using MetricsAgent;
 using MetricsAgent.Convertors;
+using MetricsAgent.Models;
 using MetricsAgent.Services;
 using MetricsAgent.Services.Implimintation;
 using Microsoft.AspNetCore.HttpLogging;
@@ -12,13 +14,9 @@ var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
 logger.Debug("init main");
 
 #region Configure SQL Lite connection & prepearing schemes
-static void ConfigureSqlLiteConnection(IServiceCollection services)
+static void ConfigureSqlLiteConnection(WebApplicationBuilder? builder)
 {
-    const string connectionString = 
-        "Data source = metrics.db; " +
-        "Version = 3; " +
-        "Pooling = true; " +
-        "Max Pool Size = 100;";
+    string connectionString = builder.Configuration["Settings:DataBaseOptions:ConnectionString"].ToString();
 
     var connection = new SQLiteConnection(connectionString);
     connection.Open();
@@ -97,6 +95,25 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    #region Configure AutoMapper:
+
+    // Create a configuration object which is based on MapperProfile class:
+    var mapperConfiguration = new MapperConfiguration(mp => mp.AddProfile(new MapperProfile())); // Config.
+    var mapper = mapperConfiguration.CreateMapper(); // Create mapper from our configuration for mapper.
+    // Add this object like a Singleton object for our app:
+    builder.Services.AddSingleton(mapper); 
+
+    #endregion 
+
+    #region Configure Options:
+
+    builder.Services.Configure<DataBaseOptions>(options =>
+    {
+        builder.Configuration.GetSection("Settings:DataBaseOptions").Bind(options);
+    }); 
+
+    #endregion
+
     #region Controllers & JsonOptions:
     // Adding custom json-serializer as option.
     builder.Services.AddControllers().AddJsonOptions(options =>
@@ -116,7 +133,7 @@ try
 
     #region Configure DataBase:
     // Call method for config our SQL lite dataBase-connection
-    ConfigureSqlLiteConnection(builder.Services);
+    ConfigureSqlLiteConnection(builder);
 
     #endregion
 
@@ -188,28 +205,3 @@ finally { NLog.LogManager.Shutdown(); }
 
 
 
-=======
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc

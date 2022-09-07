@@ -25,10 +25,7 @@ C:\Users\Artem\Desktop\MetricsManager\MetricsManager\obj\Debug\net6.0\refint\Met
 C:\Users\Artem\Desktop\MetricsManager\MetricsManager\obj\Debug\net6.0\MetricsManager.pdb
 C:\Users\Artem\Desktop\MetricsManager\MetricsManager\obj\Debug\net6.0\MetricsManager.genruntimeconfig.cache
 C:\Users\Artem\Desktop\MetricsManager\MetricsManager\obj\Debug\net6.0\ref\MetricsManager.dll
-<<<<<<< HEAD
 C:\Users\Artem\Desktop\MetricsManager\MetricsManager\bin\Debug\net6.0\nlog.config
 C:\Users\Artem\Desktop\MetricsManager\MetricsManager\bin\Debug\net6.0\NLog.dll
 C:\Users\Artem\Desktop\MetricsManager\MetricsManager\bin\Debug\net6.0\NLog.Extensions.Logging.dll
 C:\Users\Artem\Desktop\MetricsManager\MetricsManager\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
-=======
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
