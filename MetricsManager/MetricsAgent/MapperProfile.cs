@@ -15,7 +15,7 @@ namespace MetricsAgent
             CreateMap<CpuMetricCreateRequest, CpuMetric>()
                 .ForMember(x => x.Value, opt => opt.MapFrom(src => src.Value)) // For Value we do nothing.
                 // For Time we should convert TimeSpan to seconds only and to int:
-                .ForMember(x => x.Time, opt => opt.MapFrom(src => (int)src.Time.TotalSeconds));
+                .ForMember(x => x.Time, opt => opt.MapFrom(src => (long)src.Time.TotalSeconds));
 
             #endregion
 
@@ -25,7 +25,7 @@ namespace MetricsAgent
             CreateMap<DotNetMetricCreateRequest, DotNetMetric>()
                 .ForMember(x => x.Value, opt => opt.MapFrom(src => src.Value)) // For Value we do nothing.
                                                                                // For Time we should convert TimeSpan to seconds only and to int:
-                .ForMember(x => x.Time, opt => opt.MapFrom(src => (int)src.Time.TotalSeconds));
+                .ForMember(x => x.Time, opt => opt.MapFrom(src => (long)src.Time.TotalSeconds));
 
             #endregion
 
@@ -35,7 +35,7 @@ namespace MetricsAgent
             CreateMap<HddMetricCreateRequest, HddMetric>()
                 .ForMember(x => x.Value, opt => opt.MapFrom(src => src.Value)) // For Value we do nothing.
                                                                                // For Time we should convert TimeSpan to seconds only and to int:
-                .ForMember(x => x.Time, opt => opt.MapFrom(src => (int)src.Time.TotalSeconds));
+                .ForMember(x => x.Time, opt => opt.MapFrom(src => (long)src.Time.TotalSeconds));
 
             #endregion
 
@@ -45,7 +45,7 @@ namespace MetricsAgent
             CreateMap<NetworkMetricCreateRequest, NetworkMetric>()
                 .ForMember(x => x.Value, opt => opt.MapFrom(src => src.Value)) // For Value we do nothing.
                                                                                // For Time we should convert TimeSpan to seconds only and to int:
-                .ForMember(x => x.Time, opt => opt.MapFrom(src => (int)src.Time.TotalSeconds));
+                .ForMember(x => x.Time, opt => opt.MapFrom(src => (long)src.Time.TotalSeconds));
 
             #endregion
 
@@ -55,7 +55,7 @@ namespace MetricsAgent
             CreateMap<RamMetricCreateRequest, RamMetric>()
                 .ForMember(x => x.Value, opt => opt.MapFrom(src => src.Value)) // For Value we do nothing.
                                                                                // For Time we should convert TimeSpan to seconds only and to int:
-                .ForMember(x => x.Time, opt => opt.MapFrom(src => (int)src.Time.TotalSeconds));
+                .ForMember(x => x.Time, opt => opt.MapFrom(src => (long)src.Time.TotalSeconds));
 
             #endregion
         }

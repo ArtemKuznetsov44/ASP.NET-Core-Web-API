@@ -1,6 +1,8 @@
 using AutoMapper;
+using FluentMigrator.Runner;
 using MetricsAgent;
 using MetricsAgent.Convertors;
+using MetricsAgent.Job;
 using MetricsAgent.Models;
 using MetricsAgent.Services;
 using MetricsAgent.Services.Implimintation;
@@ -8,87 +10,90 @@ using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using NLog.Web;
+using Quartz;
+using Quartz.Impl;
+using Quartz.Spi;
 using System.Data.SQLite;
 
 var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
 logger.Debug("init main");
 
-#region Configure SQL Lite connection & prepearing schemes
-static void ConfigureSqlLiteConnection(WebApplicationBuilder? builder)
-{
-    string connectionString = builder.Configuration["Settings:DataBaseOptions:ConnectionString"].ToString();
+#region Configure SQL Lite connection & prepearing schemes (does not work now)!
+//static void ConfigureSqlLiteConnection(WebApplicationBuilder? builder)
+//{
+//    string connectionString = builder.Configuration["Settings:DataBaseOptions:ConnectionString"].ToString();
 
-    var connection = new SQLiteConnection(connectionString);
-    connection.Open();
-    PrepareSchema(connection);
-}
+//    var connection = new SQLiteConnection(connectionString);
+//    connection.Open();
+//    PrepareSchema(connection);
+//}
 
-static void PrepareSchema(SQLiteConnection connection)
-{
-    using (var command = new SQLiteCommand(connection))
-    {
-        #region cpumetrics table:
-        // Задаем новый текст комманды для выполнения.
-        // Удаляем таблицу с метриками, если она есть в базе данных.
-        command.CommandText = "DROP TABLE IF EXISTS cpumetrics;";
-        // Отправляем запрос в базу данных
-        command.ExecuteNonQuery(); // Выполнение созданных ранее команд.
-        // Пишем новую команду: формирование таблицы, в которой первичный ключ - id типа данных int,
-        // value - значение метрики,
-        // time - время, когда была собрана метрика.
-        // ИТОГ: новая таблица из трех столбцов.
-        command.CommandText =
-            @"CREATE TABLE cpumetrics(
-            id INTEGER PRIMARY KEY,
-            value INT, time INT)";
-        command.ExecuteNonQuery(); // Выполнение созданных ранее команд.
-        #endregion
+//static void PrepareSchema(SQLiteConnection connection)
+//{
+//    using (var command = new SQLiteCommand(connection))
+//    {
+//        #region cpumetrics table:
+//        // Задаем новый текст комманды для выполнения.
+//        // Удаляем таблицу с метриками, если она есть в базе данных.
+//        command.CommandText = "DROP TABLE IF EXISTS cpumetrics;";
+//        // Отправляем запрос в базу данных
+//        command.ExecuteNonQuery(); // Выполнение созданных ранее команд.
+//        // Пишем новую команду: формирование таблицы, в которой первичный ключ - id типа данных int,
+//        // value - значение метрики,
+//        // time - время, когда была собрана метрика.
+//        // ИТОГ: новая таблица из трех столбцов.
+//        command.CommandText =
+//            @"CREATE TABLE cpumetrics(
+//            id INTEGER PRIMARY KEY,
+//            value INT, time INT)";
+//        command.ExecuteNonQuery(); // Выполнение созданных ранее команд.
+//        #endregion
 
-        #region dotnetmetrics table:
+//        #region dotnetmetrics table:
 
-        command.CommandText = "DROP TABLE IF EXISTS dotnetmetrics;";
-        command.ExecuteNonQuery();
-        command.CommandText = @"CREATE TABLE dotnetmetrics(
-            id INTEGER PRIMARY KEY,
-            value INT, time INT)";
-        command.ExecuteNonQuery();
+//        command.CommandText = "DROP TABLE IF EXISTS dotnetmetrics;";
+//        command.ExecuteNonQuery();
+//        command.CommandText = @"CREATE TABLE dotnetmetrics(
+//            id INTEGER PRIMARY KEY,
+//            value INT, time INT)";
+//        command.ExecuteNonQuery();
 
-        #endregion
+//        #endregion
 
-        #region hddmetrics table:
+//        #region hddmetrics table:
 
-        command.CommandText = "DROP TABLE IF EXISTS hddmetrics;";
-        command.ExecuteNonQuery();
-        command.CommandText = @"CREATE TABLE hddmetrics(
-            id INTEGER PRIMARY KEY,
-            value INT, time INT)";
-        command.ExecuteNonQuery();
+//        command.CommandText = "DROP TABLE IF EXISTS hddmetrics;";
+//        command.ExecuteNonQuery();
+//        command.CommandText = @"CREATE TABLE hddmetrics(
+//            id INTEGER PRIMARY KEY,
+//            value INT, time INT)";
+//        command.ExecuteNonQuery();
 
-        #endregion
+//        #endregion
 
-        #region networkmetrics table:
+//        #region networkmetrics table:
 
-        command.CommandText = "DROP TABLE IF EXISTS networkmetrics;";
-        command.ExecuteNonQuery();
-        command.CommandText = @"CREATE TABLE networkmetrics(
-            id INTEGER PRIMARY KEY,
-            value INT, time INT)";
-        command.ExecuteNonQuery();
+//        command.CommandText = "DROP TABLE IF EXISTS networkmetrics;";
+//        command.ExecuteNonQuery();
+//        command.CommandText = @"CREATE TABLE networkmetrics(
+//            id INTEGER PRIMARY KEY,
+//            value INT, time INT)";
+//        command.ExecuteNonQuery();
 
-        #endregion
+//        #endregion
 
-        #region rammetrics table:
+//        #region rammetrics table:
 
-        command.CommandText = "DROP TABLE IF EXISTS rammetrics;";
-        command.ExecuteNonQuery();
-        command.CommandText = @"CREATE TABLE rammetrics(
-            id INTEGER PRIMARY KEY,
-            value INT, time INT)";
-        command.ExecuteNonQuery();
+//        command.CommandText = "DROP TABLE IF EXISTS rammetrics;";
+//        command.ExecuteNonQuery();
+//        command.CommandText = @"CREATE TABLE rammetrics(
+//            id INTEGER PRIMARY KEY,
+//            value INT, time INT)";
+//        command.ExecuteNonQuery();
 
-        #endregion
-    }
-}
+//        #endregion
+//    }
+//}
 #endregion 
 
 try
@@ -131,9 +136,52 @@ try
 
     #endregion
 
+    #region Configure Jobs:
+
+    // A service factory registration:
+    builder.Services.AddSingleton<IJobFactory, SingletonJobFactory>();
+    // A base Quartz service registration:
+    builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+
+    // Task service registrations.
+    builder.Services.AddSingleton<CpuMetricJob>(); 
+    builder.Services.AddSingleton(new JobSchedule(
+        jobType: typeof(CpuMetricJob), 
+        // Every five seconds we should ask our metric 
+        cronExpression: "0/5 * * ? * * *"));
+
+    // Task service registrations.
+    builder.Services.AddSingleton<DotNetMetricJob>();
+    builder.Services.AddSingleton(new JobSchedule(
+        jobType: typeof(DotNetMetricJob),
+        // Every five seconds we should ask our metric 
+        cronExpression: "0/5 * * ? * * *"));
+
+    // Task service registrations.
+    builder.Services.AddSingleton<RamMetricJob>();
+    builder.Services.AddSingleton(new JobSchedule(
+        jobType: typeof(RamMetricJob),
+        // Every five seconds we should ask our metric 
+        cronExpression: "0/5 * * ? * * *"));
+
+    builder.Services.AddSingleton<QuartzHostedService>(); 
+
+    #endregion
+
     #region Configure DataBase:
+
     // Call method for config our SQL lite dataBase-connection
-    ConfigureSqlLiteConnection(builder);
+    //ConfigureSqlLiteConnection(builder);
+
+    // Adding a FluntMigration service with a ConfigureRunner method, 
+    // where we can configurate our DataBase connection and then find all migration along the
+    // specified path:
+    builder.Services.AddFluentMigratorCore()
+        .ConfigureRunner(rb =>
+        rb.AddSQLite()
+        .WithGlobalConnectionString(builder.Configuration["Settings:DataBaseOptions:ConnectionString"].ToString()) // connectionString
+        .ScanIn(typeof(Program).Assembly).For.Migrations() // Proccess of finding our migrations
+        ).AddLogging(lb => lb.AddFluentMigratorConsole()); // For cnosole logging migrations. 
 
     #endregion
 
@@ -192,6 +240,16 @@ try
     app.UseHttpLogging(); // If we whant to add http-logging. 
 
     app.MapControllers();
+
+    // IScopeFactory can create a scope element or service.
+    var serviceScopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>(); 
+    using (IServiceScope serviceScope = serviceScopeFactory.CreateScope())
+    {
+        var migrationRunner = serviceScope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+        migrationRunner.MigrateUp(); // Apply migration to the last migration version. 
+        // migrationRunner.MigrateUp(1); // Apply migration to the specified version.
+        // migrationRunner.MigrateDown(0); 
+    }
 
     app.Run();
 }
