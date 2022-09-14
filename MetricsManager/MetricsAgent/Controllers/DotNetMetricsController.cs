@@ -1,11 +1,11 @@
-﻿using MetricsAgent.Models;
-using MetricsAgent.Models.Requests;
+﻿using MetricsAgent.Models.Requests;
 using MetricsAgent.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using MetricsAgent.Models.DTO;
 using MetricsAgent.Models.Responses;
+using MetricsAgent.Models.MetricClasses;
 
 namespace MetricsAgent.Controllers
 {
@@ -40,7 +40,8 @@ namespace MetricsAgent.Controllers
         }
 
         [HttpGet("errors-count/from/{fromTime}/to/{toTime}")]
-        public ActionResult<DotNetMetricsResponse> GetErrorsCountMetricByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<DotNetMetricsResponse> GetErrorsCountMetricByPeriod(
+            [FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/DotNetMetricsController/GetErrorsCountMetricByPeriod params:\n" +
                 $"fromTime: {fromTime},\n" +

@@ -1,4 +1,4 @@
-﻿using MetricsAgent.Models;
+﻿using MetricsAgent.Models.MetricClasses;
 
 namespace MetricsAgent.Services
 {

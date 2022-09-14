@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using MetricsAgent.Models;
 using MetricsAgent.Models.DTO;
+using MetricsAgent.Models.MetricClasses;
 using MetricsAgent.Models.Requests;
 using MetricsAgent.Models.Responses;
 using MetricsAgent.Services;
@@ -18,20 +18,20 @@ namespace MetricsAgent.Controllers
         // Logger type should be CpuMetricsController because its work in it.
         private readonly ILogger<CpuMetricsController> _logger; // Adding logger field.
         private readonly ICpuMetricsRepository _cpuMetricsRepository;
-        private readonly IMapper _mapper; 
+        private readonly IMapper _mapper;
 
-        #endregion 
-        
+        #endregion
+
         public CpuMetricsController(
-            ILogger<CpuMetricsController> logger, 
-            ICpuMetricsRepository cpuMetricsRepository, 
+            ILogger<CpuMetricsController> logger,
+            ICpuMetricsRepository cpuMetricsRepository,
             IMapper mapper)
         {
             _logger = logger; // Intialize our logger in constructor.
             _mapper = mapper;
             _cpuMetricsRepository = cpuMetricsRepository;
         }
-        
+
         // Method for creating CpuMetric:
         [HttpPost("create")]
         public IActionResult Create([FromBody] CpuMetricCreateRequest request)
@@ -57,7 +57,8 @@ namespace MetricsAgent.Controllers
 
         // Method for getting CpuMetric-s objects by period:
         [HttpGet("from/{fromTime}/to/{toTime}")]
-        public ActionResult<CpuMetricsResponse> GetCpuMetricsByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<CpuMetricsResponse> GetCpuMetricsByPeriod(
+            [FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/CpuMetricsController/GetMetricsByPeriod params:\n" +
                 $"fromTime: {fromTime},\n" +
@@ -88,17 +89,14 @@ namespace MetricsAgent.Controllers
 
             #endregion
 
-            #region Variant_3.AutoMapper:
-
-           var cpuMetricsResponse = new CpuMetricsResponse
-           {
-                Metrics =_cpuMetricsRepository.GetByTimePeriod(fromTime, toTime)
-                .Select(metric => _mapper.Map<CpuMetricDto>(metric)).ToList()
-           };
+            // Variant_3.AutoMapper:
+            var cpuMetricsResponse = new CpuMetricsResponse
+            {
+                Metrics = _cpuMetricsRepository.GetByTimePeriod(fromTime, toTime)
+                 .Select(metric => _mapper.Map<CpuMetricDto>(metric)).ToList()
+            };
 
             return Ok(cpuMetricsResponse);
-
-            #endregion 
         }
 
         // Method returns a list with all CpuMetric-s objects which were created before:
@@ -110,7 +108,7 @@ namespace MetricsAgent.Controllers
                 Metrics = _cpuMetricsRepository.GetAll()
             .Select(metric => _mapper.Map<CpuMetricDto>(metric)).ToList()
             };
-            return Ok(cpuMetricsResponse); 
+            return Ok(cpuMetricsResponse);
         }
     }
 }

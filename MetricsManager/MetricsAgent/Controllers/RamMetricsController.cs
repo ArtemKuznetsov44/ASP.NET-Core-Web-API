@@ -1,11 +1,11 @@
-﻿using MetricsAgent.Models;
-using MetricsAgent.Models.Requests;
+﻿using MetricsAgent.Models.Requests;
 using MetricsAgent.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using MetricsAgent.Models.DTO;
 using MetricsAgent.Models.Responses;
+using MetricsAgent.Models.MetricClasses;
 
 namespace MetricsAgent.Controllers
 {
@@ -40,7 +40,8 @@ namespace MetricsAgent.Controllers
         }
 
         [HttpGet("available/from/{fromTime}/to/{toTime}")]
-        public ActionResult<RamMetricsResponse> GetAvailableMetricByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<RamMetricsResponse> GetAvailableMetricByPeriod(
+            [FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/RamMetricsController/GetAvailableMetricByPeriod params:\n" +
                $"fromTime: {fromTime},\n" +

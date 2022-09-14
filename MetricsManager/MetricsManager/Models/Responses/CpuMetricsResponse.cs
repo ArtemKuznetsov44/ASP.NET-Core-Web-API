@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using MetricsManager.Models.MetricClasses;
+using System.Text.Json.Serialization;
 
 namespace MetricsManager.Models.Responses
 {

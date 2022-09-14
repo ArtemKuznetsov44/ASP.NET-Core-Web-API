@@ -12,16 +12,14 @@ namespace MetricsManager.Services.Implimintation
         #region Services:
 
         private readonly IOptions<DataBaseOptions> _dataBaseOptions;
-        private readonly IMapper _mapper;
+        // private readonly IMapper _mapper;
 
         #endregion 
 
-        public AgentsRepository(
-            IOptions<DataBaseOptions> dataBaseOptions, 
-            IMapper mapper)
+        public AgentsRepository(IOptions<DataBaseOptions> dataBaseOptions)
         {
             _dataBaseOptions = dataBaseOptions;
-            _mapper = mapper;
+            // _mapper = mapper;
         }
 
         public void Add(AgentInfoDto item)

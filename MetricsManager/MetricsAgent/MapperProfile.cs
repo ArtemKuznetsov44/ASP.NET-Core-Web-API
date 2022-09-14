@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using MetricsAgent.Models;
 using MetricsAgent.Models.DTO;
+using MetricsAgent.Models.MetricClasses;
 using MetricsAgent.Models.Requests;
 
 namespace MetricsAgent

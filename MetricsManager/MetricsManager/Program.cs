@@ -4,11 +4,14 @@ using MetricsManager;
 using MetricsManager.Convertors;
 using MetricsManager.Models;
 using MetricsManager.Services;
+using MetricsManager.Services.Client;
+using MetricsManager.Services.Client.Implimintation;
 using MetricsManager.Services.Implimintation;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using NLog.Web;
+using Polly;
 
 var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
 logger.Debug("init main");
@@ -97,12 +100,30 @@ try
 
     #region Configure Repositories:
 
-    builder.Services.AddSingleton<IAgentsRepository, AgentsRepository>(); 
+    builder.Services.AddSingleton<IAgentsRepository, AgentsRepository>();
 
     #endregion
 
-    builder.Services.AddHttpClient(); 
-    
+    #region Configure HttpClient:
+
+    builder.Services.AddHttpClient();
+
+    // Registration our own httpClient:
+    builder.Services.AddHttpClient<IMetricsAgentClient, MetricsAgentClient>()
+        // This method we get from Polly, and now we can configure our httpClient:
+        .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(retryCount: 3,        // The count of retries:
+            // The time for sleeping after retry, which is increse geometrically:
+            sleepDurationProvider: (attmptCount) => TimeSpan.FromSeconds(attmptCount * 2),
+            onRetry: (response, sleepDuration, attemtCount, context) =>
+            {
+                logger.Error(response.Exception != null ? response.Exception :
+                    new Exception($"\n{response.Result.StatusCode} : {response.Result.RequestMessage}"),
+                    $"(attempt: {attemtCount}) request exception."); 
+            }
+            ));
+
+    #endregion
+
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
