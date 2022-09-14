@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
         "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Artem\\Desktop\\MetricsManager\\MetricsAgent\\obj\\",
-=======
-    "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
-        "projectName": "MetricsAgent",
-        "projectPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\MetricsAgent.csproj",
-        "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Artem\\Downloads\\Lesson_2-20220902T152816Z-001\\Lesson_2\\MetricsManager\\MetricsAgent\\obj\\",
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,7 +44,30 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-<<<<<<< HEAD
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "FluentMigrator": {
+              "target": "Package",
+              "version": "[3.3.2, )"
+            },
+            "FluentMigrator.Runner": {
+              "target": "Package",
+              "version": "[3.3.2, )"
+            },
+            "FluentMigrator.Runner.SQLite": {
+              "target": "Package",
+              "version": "[3.3.2, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -71,6 +80,10 @@
               "target": "Package",
               "version": "[5.1.0, )"
             },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -78,11 +91,10 @@
             "System.Data.SQLite.Core": {
               "target": "Package",
               "version": "[1.0.116, )"
-=======
-            "Swashbuckle.AspNetCore": {
+            },
+            "System.Diagnostics.PerformanceCounter": {
               "target": "Package",
-              "version": "[6.2.3, )"
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
+              "version": "[6.0.1, )"
             }
           },
           "imports": [

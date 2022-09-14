@@ -7,15 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="NLog" Version="5.0.1" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 	  <Content Update="nlog.config" CopyToOutputDirectory="PreserveNewest" />
-=======
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
->>>>>>> 82c1144b80e48698a5950e4a80dd8d4719588fbc
   </ItemGroup>
 
 </Project>
