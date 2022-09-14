@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using MetricsAgent.Models.DTO;
+using MetricsAgent.Models.Responses;
 
 namespace MetricsAgent.Controllers
 {
@@ -22,7 +23,7 @@ namespace MetricsAgent.Controllers
 
         public HddMetricsController(
             ILogger<HddMetricsController> logger,
-            IHddMetricsRepository hddMetricRepository, 
+            IHddMetricsRepository hddMetricRepository,
             IMapper mapper)
         {
             _logger = logger;
@@ -39,17 +40,30 @@ namespace MetricsAgent.Controllers
         }
 
         [HttpGet("left/from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<HddMetricDto>> GetLeftMetricsByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<HddMetricsResponse> GetLeftMetricsByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/HddMetricsController/GetLeftMetricsByPeriod params:\n" +
                 $"fromTime: {fromTime},\n" +
                 $"toTime: {toTime}");
-            return Ok(_hddMetricRepository.GetByTimePeriod(fromTime, toTime)
-                .Select(metric => _mapper.Map<HddMetricDto>(metric)).ToList());
+
+            var hddMetricsResponse = new HddMetricsResponse
+            {
+                Metrics = _hddMetricRepository.GetByTimePeriod(fromTime, toTime)
+                .Select(metric => _mapper.Map<HddMetricDto>(metric)).ToList()
+            };
+
+            return Ok(hddMetricsResponse);
         }
 
         [HttpGet("all")]
-        public ActionResult<IList<HddMetricDto>> GetAllHddMetrics() => Ok(_hddMetricRepository.GetAll()
-            .Select(metric => _mapper.Map<HddMetricDto>(metric)).ToList());
+        public ActionResult<HddMetricsResponse> GetAllHddMetrics()
+        {
+            var hddMetricsReponse = new HddMetricsResponse
+            {
+                Metrics = _hddMetricRepository.GetAll()
+                .Select(metric => _mapper.Map<HddMetricDto>(metric)).ToList()
+            };
+            return Ok(hddMetricsReponse);
+        }
     }
 }

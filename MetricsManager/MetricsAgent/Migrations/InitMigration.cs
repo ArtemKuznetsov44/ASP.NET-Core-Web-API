@@ -7,12 +7,9 @@ namespace MetricsAgent.Migrations
     public class InitMigration : Migration
     {
         // This method, should be called when we what to apply our old migration.
-        public override void Down()
-        {
-        }
+        public override void Down() { }
+       
         // This method sould be called, when we want to add or apply new migration.
-        public override void Up()
-        {
-        }
+        public override void Up() { }
     }
 }

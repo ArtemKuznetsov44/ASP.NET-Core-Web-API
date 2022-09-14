@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MetricsManager.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MetricsManager.Controllers
@@ -10,10 +11,21 @@ namespace MetricsManager.Controllers
         #region Services
 
         private readonly ILogger<NetworkMetricsController> _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IAgentsRepository _agentsRepository;
 
         #endregion
 
-        public NetworkMetricsController(ILogger<NetworkMetricsController> logger) => _logger = logger;
+        public NetworkMetricsController(
+            ILogger<NetworkMetricsController> logger,
+            IAgentsRepository agentsRepository,
+            IHttpClientFactory httpClientFactory)
+        {
+            _logger = logger;
+            _httpClientFactory = httpClientFactory;
+            _agentsRepository = agentsRepository;
+
+        }
 
         // Метод для получения метрик с одного определенного агента в указанном диапазоне времени: 
         [HttpGet("agent/{agentId}/from/{fromTime}/to/{toTime}")]

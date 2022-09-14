@@ -2,6 +2,7 @@
 using MetricsAgent.Models;
 using MetricsAgent.Models.DTO;
 using MetricsAgent.Models.Requests;
+using MetricsAgent.Models.Responses;
 using MetricsAgent.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -56,7 +57,7 @@ namespace MetricsAgent.Controllers
 
         // Method for getting CpuMetric-s objects by period:
         [HttpGet("from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<CpuMetricDto>> GetCpuMetricsByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<CpuMetricsResponse> GetCpuMetricsByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/CpuMetricsController/GetMetricsByPeriod params:\n" +
                 $"fromTime: {fromTime},\n" +
@@ -89,16 +90,27 @@ namespace MetricsAgent.Controllers
 
             #region Variant_3.AutoMapper:
 
-            return Ok(_cpuMetricsRepository.GetByTimePeriod(fromTime, toTime)
-                .Select(metric => _mapper.Map<CpuMetricDto>(metric)).ToList()); 
+           var cpuMetricsResponse = new CpuMetricsResponse
+           {
+                Metrics =_cpuMetricsRepository.GetByTimePeriod(fromTime, toTime)
+                .Select(metric => _mapper.Map<CpuMetricDto>(metric)).ToList()
+           };
+
+            return Ok(cpuMetricsResponse);
 
             #endregion 
-
         }
 
         // Method returns a list with all CpuMetric-s objects which were created before:
         [HttpGet("all")]
-        public ActionResult<IList<CpuMetric>> GetAllCpuMetrics() => Ok(_cpuMetricsRepository.GetAll()
-            .Select(metric => _mapper.Map<CpuMetricDto>(metric)).ToList()); 
+        public ActionResult<CpuMetricsResponse> GetAllCpuMetrics()
+        {
+            var cpuMetricsResponse = new CpuMetricsResponse
+            {
+                Metrics = _cpuMetricsRepository.GetAll()
+            .Select(metric => _mapper.Map<CpuMetricDto>(metric)).ToList()
+            };
+            return Ok(cpuMetricsResponse); 
+        }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using MetricsAgent.Models.DTO;
+using MetricsAgent.Models.Responses;
 
 namespace MetricsAgent.Controllers
 {
@@ -39,17 +40,31 @@ namespace MetricsAgent.Controllers
         }
 
         [HttpGet("available/from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<RamMetricDto>> GetAvailableMetricByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<RamMetricsResponse> GetAvailableMetricByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/RamMetricsController/GetAvailableMetricByPeriod params:\n" +
                $"fromTime: {fromTime},\n" +
                $"toTime: {toTime}");
-            return Ok(_ramMetricsRepository.GetByTimePeriod(fromTime, toTime)
-                .Select(metric => _mapper.Map<RamMetricDto>(metric)).ToList()); 
+
+            var ramMetricsResponse = new RamMetricsResponse
+            {
+                Metrics = _ramMetricsRepository.GetByTimePeriod(fromTime, toTime)
+                .Select(metric => _mapper.Map<RamMetricDto>(metric)).ToList()
+            }; 
+
+            return Ok(ramMetricsResponse); 
         }
 
         [HttpGet("all")]
-        public ActionResult<IList<RamMetricDto>> GetAllRamMetrics() => Ok(_ramMetricsRepository.GetAll()
-            .Select(metric => _mapper.Map<RamMetricDto>(metric)).ToList());
+        public ActionResult<RamMetricsResponse> GetAllRamMetrics()
+        {
+            var ramMetricsResponse = new RamMetricsResponse
+            {
+                Metrics = _ramMetricsRepository.GetAll()
+            .Select(metric => _mapper.Map<RamMetricDto>(metric)).ToList()
+            }; 
+
+            return Ok(ramMetricsResponse);
+        }
     }
 }

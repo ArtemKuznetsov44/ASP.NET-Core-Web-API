@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using MetricsAgent.Models.DTO;
+using MetricsAgent.Models.Responses;
 
 namespace MetricsAgent.Controllers
 {
@@ -39,17 +40,31 @@ namespace MetricsAgent.Controllers
         }
 
         [HttpGet("from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<NetworkMetricDto>> GetMetricsByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<NetworkMetricsResponse> GetMetricsByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/NetworkMetricsController/GetMetricsByPeriod params:\n" +
                $"fromTime: {fromTime},\n" +
                $"toTime: {toTime}");
-            return Ok(_networkMetricsRepository.GetByTimePeriod(fromTime, toTime)
-                .Select(metric => _mapper.Map<NetworkMetricDto>(metric)).ToList());
+
+            var networkMetricsReponse = new NetworkMetricsResponse
+            {
+                Metrics = _networkMetricsRepository.GetByTimePeriod(fromTime, toTime)
+                .Select(metric => _mapper.Map<NetworkMetricDto>(metric)).ToList()
+            };
+
+            return Ok(networkMetricsReponse);
         }
 
         [HttpGet("all")]
-        public ActionResult<IList<NetworkMetricDto>> GetAllNetworkMetrics() => Ok(_networkMetricsRepository.GetAll()
-            .Select(metric => _mapper.Map<NetworkMetricDto>(metric)).ToList());
+        public ActionResult<NetworkMetricsResponse> GetAllNetworkMetrics()
+        {
+            var networkMetricsReponse = new NetworkMetricsResponse
+            {
+                Metrics = _networkMetricsRepository.GetAll()
+            .Select(metric => _mapper.Map<NetworkMetricDto>(metric)).ToList()
+            }; 
+
+            return Ok(networkMetricsReponse);
+        }
     }
 }

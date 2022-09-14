@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MetricsManager.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MetricsManager.Controllers
@@ -10,11 +11,22 @@ namespace MetricsManager.Controllers
         #region Services
 
         private readonly ILogger<HddMetricsController> _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IAgentsRepository _agentsRepository;
 
         #endregion
 
-        public HddMetricsController(ILogger<HddMetricsController> logger) => _logger = logger;
-      
+        public HddMetricsController(
+            ILogger<HddMetricsController> logger,
+            IAgentsRepository agentsRepository,
+            IHttpClientFactory httpClientFactory)
+        {
+            _logger = logger;
+            _httpClientFactory = httpClientFactory;
+            _agentsRepository = agentsRepository;
+
+        }
+
         // Метод для получения метрик с одного определенного агента в указанном диапазоне времени: 
         [HttpGet("agent/{agentId}/from/{fromTime}/to/{toTime}")]
         public IActionResult GetMetricsFromAgent([FromRoute] int agentId, [FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)

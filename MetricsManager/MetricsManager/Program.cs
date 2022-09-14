@@ -1,9 +1,14 @@
+using AutoMapper;
+using FluentMigrator.Runner;
 using MetricsManager;
 using MetricsManager.Convertors;
+using MetricsManager.Models;
+using MetricsManager.Services;
+using MetricsManager.Services.Implimintation;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using NLog.Web; 
+using NLog.Web;
 
 var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
 logger.Debug("init main");
@@ -13,17 +18,29 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    // Add services to the container.
+    #region Configure AutoMapper:
+
+    // Create a configuration object which is based on MapperProfile class:
+    var mapperConfiguration = new MapperConfiguration(mp => mp.AddProfile(new MapperProfile())); // Config.
+    var mapper = mapperConfiguration.CreateMapper(); // Create mapper from our configuration for mapper.
+    // Add this object like a Singleton object for our app:
+    builder.Services.AddSingleton(mapper);
+
+    #endregion
+    #region Configure json-converter:
+
     builder.Services.AddControllers().AddJsonOptions(options =>
         options.JsonSerializerOptions.Converters.Add(new CustomTimeSpanConverter()));
 
-    #region SWAGGER
+    #endregion
+
+    #region Configure Swagger:
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     // Modified SWAGGER:
     builder.Services.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "MetricsAgent", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "MetricsManager", Version = "v1" });
 
         // TimeSpan format supporting:
         c.MapType<TimeSpan>(() => new OpenApiSchema
@@ -56,9 +73,35 @@ try
         logging.ResponseHeaders.Add("X-Real-IP");
         logging.ResponseHeaders.Add("X-Forwarded-For");
     });
-    #endregion 
+    #endregion
 
-    builder.Services.AddSingleton<AgentsRepository>();
+    #region Configure Options:
+
+    builder.Services.Configure<DataBaseOptions>(options =>
+    {
+        builder.Configuration.GetSection("Settings:DataBaseOptions").Bind(options);
+    });
+
+    #endregion
+
+    #region Configure DataBase:
+
+    builder.Services.AddFluentMigratorCore()
+        .ConfigureRunner(rb =>
+        rb.AddSQLite()
+        .WithGlobalConnectionString(builder.Configuration["Settings:DataBaseOptions:ConnectionString"].ToString()) // connectionString
+        .ScanIn(typeof(Program).Assembly).For.Migrations() // Proccess of finding our migrations
+        ).AddLogging(lb => lb.AddFluentMigratorConsole()); // For cnosole logging migrations. 
+
+    #endregion
+
+    #region Configure Repositories:
+
+    builder.Services.AddSingleton<IAgentsRepository, AgentsRepository>(); 
+
+    #endregion
+
+    builder.Services.AddHttpClient(); 
     
     var app = builder.Build();
 
@@ -74,6 +117,16 @@ try
     app.UseHttpLogging(); // If we whant to add http-logging. 
 
     app.MapControllers();
+
+    // IScopeFactory can create a scope element or service.
+    var serviceScopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+    using (IServiceScope serviceScope = serviceScopeFactory.CreateScope())
+    {
+        var migrationRunner = serviceScope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+        migrationRunner.MigrateUp(); // Apply migration to the last migration version. 
+        // migrationRunner.MigrateUp(1); // Apply migration to the specified version.
+        // migrationRunner.MigrateDown(0); 
+    }
 
     app.Run();
 }

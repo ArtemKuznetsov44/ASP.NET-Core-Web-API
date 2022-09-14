@@ -18,7 +18,7 @@ namespace MetricsAgent.Job
             _serviceScopeFactory = serviceScopeFactory;
             _dotNetCounter = new PerformanceCounter(
                 categoryName: ".NET CLR Memory",
-                counterName: "# Bytes in all heapls", 
+                counterName: "# Bytes in all heaps", 
                 instanceName: "_Global_");
         }
 
