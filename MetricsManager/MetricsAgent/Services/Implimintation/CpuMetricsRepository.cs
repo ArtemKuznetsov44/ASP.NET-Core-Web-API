@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Data.SQLite;
 using Dapper;
-
+using MetricsAgent.Models.MetricClasses;
 
 namespace MetricsAgent.Services.Implimintation
 {

@@ -4,7 +4,7 @@ using Quartz.Spi;
 namespace MetricsAgent.Job
 {
     // This is a srevice that uses a scheduler to run tasks.
-    public class QuartzHostedService
+    public class QuartzHostedService : IHostedService
     {
         #region Services:
 
@@ -15,7 +15,6 @@ namespace MetricsAgent.Job
         #endregion
 
         #region Constructors:
-
         public QuartzHostedService(
             ISchedulerFactory schedulerFactory, 
             IJobFactory jobFactory, 

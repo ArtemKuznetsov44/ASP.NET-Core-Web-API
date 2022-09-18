@@ -1,10 +1,11 @@
-﻿using MetricsAgent.Models;
-using MetricsAgent.Models.Requests;
+﻿using MetricsAgent.Models.Requests;
 using MetricsAgent.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using MetricsAgent.Models.DTO;
+using MetricsAgent.Models.Responses;
+using MetricsAgent.Models.MetricClasses;
 
 namespace MetricsAgent.Controllers
 {
@@ -22,7 +23,7 @@ namespace MetricsAgent.Controllers
 
         public DotNetMetricsController(
             ILogger<DotNetMetricsController> logger,
-            IDotNetMetricsRepository dotNetMetricsRepository, 
+            IDotNetMetricsRepository dotNetMetricsRepository,
             IMapper mapper)
         {
             _logger = logger;
@@ -39,17 +40,31 @@ namespace MetricsAgent.Controllers
         }
 
         [HttpGet("errors-count/from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<DotNetMetricDto>> GetErrorsCountMetricByPeriod([FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
+        public ActionResult<DotNetMetricsResponse> GetErrorsCountMetricByPeriod(
+            [FromRoute] TimeSpan fromTime, [FromRoute] TimeSpan toTime)
         {
             _logger.LogInformation($"MetricsAgent/DotNetMetricsController/GetErrorsCountMetricByPeriod params:\n" +
                 $"fromTime: {fromTime},\n" +
                 $"toTime: {toTime}");
-            return Ok(_dotNetMetricsRepository.GetByTimePeriod(fromTime, toTime).
-                Select(metric => _mapper.Map<DotNetMetricDto>(metric)).ToList());
+
+            var dotNetMetricsResponse = new DotNetMetricsResponse
+            {
+                Metrics = _dotNetMetricsRepository.GetByTimePeriod(fromTime, toTime).
+                Select(metric => _mapper.Map<DotNetMetricDto>(metric)).ToList()
+            };
+
+            return Ok(dotNetMetricsResponse);
         }
 
         [HttpGet("all")]
-        public ActionResult<IList<DotNetMetricDto>> GetAllDotNetMetrics() => Ok(_dotNetMetricsRepository.GetAll()
-            .Select(metric => _mapper.Map<DotNetMetricDto>(metric)).ToList());
+        public ActionResult<DotNetMetricsResponse> GetAllDotNetMetrics()
+        {
+            var dotNetMetricsResponse = new DotNetMetricsResponse
+            {
+                Metrics = _dotNetMetricsRepository.GetAll()
+                .Select(metric => _mapper.Map<DotNetMetricDto>(metric)).ToList()
+            };
+            return Ok(dotNetMetricsResponse);
+        }
     }
 }

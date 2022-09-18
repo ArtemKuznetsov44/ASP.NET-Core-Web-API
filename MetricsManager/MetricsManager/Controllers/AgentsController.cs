@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using MetricsManager.Models;
+using MetricsManager.Models.DTO;
+using MetricsManager.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MetricsManager.Controllers
@@ -9,23 +13,32 @@ namespace MetricsManager.Controllers
     {
         #region Services
 
-        private readonly AgentsRepository _agents;
+        private readonly IAgentsRepository _agentsRepository;
         private readonly ILogger<AgentsController> _logger;
+        private readonly IMapper _mapper;
 
         #endregion
 
-        public AgentsController(AgentsRepository agents, ILogger<AgentsController> logger)
+        public AgentsController(
+            ILogger<AgentsController> logger, 
+            IAgentsRepository agentsRepository, 
+            IMapper mapper)
         {
-            _agents = agents;
+            _agentsRepository = agentsRepository;
             _logger = logger;
+            _mapper = mapper;
+            
         }
 
         // Метод для регистрации/добавления агента сбора метрик:
         [HttpPost("register")]
-        public IActionResult RegisterAgent([FromBody] AgentInfo agentInfo)
+        public IActionResult RegisterAgent([FromBody] AgentInfoDto agentInfoDto)
         {
             _logger.LogInformation($"MetricsManager/AgentsController/RegisterAgent params:\n" +
-                $"agentInfo: {agentInfo}");
+                $"agentInfo: {agentInfoDto}");
+
+            _agentsRepository.Add(agentInfoDto);  
+
             return Ok(); 
         }
         
@@ -35,6 +48,9 @@ namespace MetricsManager.Controllers
         {
             _logger.LogInformation($"MetricsManager/AgentsController/EnableAgentById params:\n" +
                $"agentInfo: {agentId}");
+
+            _agentsRepository.Enable(agentId);
+
             return Ok(); 
         }
 
@@ -44,14 +60,16 @@ namespace MetricsManager.Controllers
         {
             _logger.LogInformation($"MetricsManager/AgentsController/DisableAgentById params:\n" +
                $"agentInfo: {agentId}");
+
+            _agentsRepository.Disable(agentId); 
+
             return Ok(); 
         }
-        
+
         // Метод для получения всех зарегистрированных агентов:
         [HttpGet("registeredAgents")]
-        public IActionResult GetAllRegisteredAgents()
-        {
-            return Ok(_agents); 
-        }
+        public ActionResult<AgentInfoDto> GetAllRegisteredAgents() => 
+            Ok(_agentsRepository.GetAll().ToArray());
+      
     }
 }

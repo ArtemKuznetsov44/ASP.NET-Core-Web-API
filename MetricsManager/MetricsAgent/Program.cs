@@ -144,27 +144,27 @@ try
     builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 
     // Task service registrations.
-    builder.Services.AddSingleton<CpuMetricJob>(); 
+    builder.Services.AddSingleton<CpuMetricJob>();
     builder.Services.AddSingleton(new JobSchedule(
-        jobType: typeof(CpuMetricJob), 
+        jobType: typeof(CpuMetricJob),
         // Every five seconds we should ask our metric 
         cronExpression: "0/5 * * ? * * *"));
 
-    // Task service registrations.
-    builder.Services.AddSingleton<DotNetMetricJob>();
-    builder.Services.AddSingleton(new JobSchedule(
-        jobType: typeof(DotNetMetricJob),
-        // Every five seconds we should ask our metric 
-        cronExpression: "0/5 * * ? * * *"));
+    //// Task service registrations.
+    //builder.Services.AddSingleton<DotNetMetricJob>();
+    //builder.Services.AddSingleton(new JobSchedule(
+    //    jobType: typeof(DotNetMetricJob),
+    //    // Every five seconds we should ask our metric 
+    //    cronExpression: "0/5 * * ? * * *"));
 
-    // Task service registrations.
-    builder.Services.AddSingleton<RamMetricJob>();
-    builder.Services.AddSingleton(new JobSchedule(
-        jobType: typeof(RamMetricJob),
-        // Every five seconds we should ask our metric 
-        cronExpression: "0/5 * * ? * * *"));
+    //// Task service registrations.
+    //builder.Services.AddSingleton<RamMetricJob>();
+    //builder.Services.AddSingleton(new JobSchedule(
+    //    jobType: typeof(RamMetricJob),
+    //    // Every five seconds we should ask our metric 
+    //    cronExpression: "0/5 * * ? * * *"));
 
-    builder.Services.AddSingleton<QuartzHostedService>(); 
+    builder.Services.AddHostedService<QuartzHostedService>(); 
 
     #endregion
 
