@@ -18,7 +18,7 @@ namespace MetricsAgent.Job
             _serviceScopeFactory = serviceScopeFactory;
             _ramCounter = new PerformanceCounter(
                 categoryName: "Memory",
-                counterName: "Available MBytes"
+                counterName: "% Committed Bytes In Use"
                );
         }
 
@@ -34,7 +34,7 @@ namespace MetricsAgent.Job
                     var time = TimeSpan.FromSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds()); // Get time in seconds.
                     Debug.WriteLine($"{time} > {ramUsage}");
 
-                    ramMetricsRepository.Create(new Models.RamMetric
+                    ramMetricsRepository.Create(new Models.MetricClasses.RamMetric
                     {
                         Value = (int)ramUsage,
                         Time = (long)time.TotalSeconds

@@ -1,0 +1,17 @@
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\bin\Debug\net6.0\MetricsManager.Client.exe
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\bin\Debug\net6.0\MetricsManager.Client.deps.json
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\bin\Debug\net6.0\MetricsManager.Client.runtimeconfig.json
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\bin\Debug\net6.0\MetricsManager.Client.dll
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\bin\Debug\net6.0\MetricsManager.Client.pdb
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.csproj.AssemblyReference.cache
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.AssemblyInfoInputs.cache
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.AssemblyInfo.cs
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.csproj.CoreCompileInputs.cache
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.csproj.CopyComplete
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.dll
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\refint\MetricsManager.Client.dll
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.pdb
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\MetricsManager.Client.genruntimeconfig.cache
+C:\Users\Artem\Desktop\MetricsManager\MetricsManager.Client\obj\Debug\net6.0\ref\MetricsManager.Client.dll

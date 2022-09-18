@@ -18,7 +18,7 @@ namespace MetricsAgent.Job
             _serviceScopeFactory = serviceScopeFactory;
             _dotNetCounter = new PerformanceCounter(
                 categoryName: ".NET CLR Memory",
-                counterName: "# Bytes in all heaps", 
+                counterName: "# Bytes in all Heaps", 
                 instanceName: "_Global_");
         }
 
@@ -34,7 +34,7 @@ namespace MetricsAgent.Job
                     var time = TimeSpan.FromSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds()); // Get time in seconds.
                     Debug.WriteLine($"{time} > {dotNetUsage}");
 
-                    dotNetMetricsRepository.Create(new Models.DotNetMetric
+                    dotNetMetricsRepository.Create(new Models.MetricClasses.DotNetMetric
                     {
                         Value = (int)dotNetUsage,
                         Time = (long)time.TotalSeconds
