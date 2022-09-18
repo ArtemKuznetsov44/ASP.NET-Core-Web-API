@@ -33,7 +33,7 @@ namespace MetricsAgent.Job
                     var time = TimeSpan.FromSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds()); // Get time in seconds.
                     Debug.WriteLine($"{time} > {cpuUsageInPercents}");
 
-                    cpuMetricsRepository.Create(new Models.CpuMetric
+                    cpuMetricsRepository.Create(new Models.MetricClasses.CpuMetric
                     {
                         Value = (int)cpuUsageInPercents,
                         Time = (long)time.TotalSeconds

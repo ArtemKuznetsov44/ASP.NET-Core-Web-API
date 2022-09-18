@@ -9,6 +9,6 @@ namespace MetricsManager.Services.Client
         DotNetMetricsResponse GetDotNetMetrics(DotNetMetricsRequest request);
         HddMetricsResponse GetHddMetrics(HddMetricsRequest request);
         NetworkMetricsResponse GetNetworkMetrics(NetworkMetricsRequest request);
-        RamMetricsResponse GetRamMetrcis(RamMetricsRequest); 
+        RamMetricsResponse GetRamMetrcis(RamMetricsRequest request); 
     }
 }
